@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
@@ -13,7 +14,7 @@ public static class SceneLoader
     {
         
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single); // rReplace current scene with the new one 
-
+        
     }
 }
 
