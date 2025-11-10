@@ -1,6 +1,6 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
 
+
+using UnityEngine;
 
 
 
@@ -8,12 +8,15 @@ public class BootstrapLoader : MonoBehaviour
 
 
 {
+    [Header("first scene to load")]
 
-    // this script loads the MainMenu when The game starts
+
+    public string mainMenu = "MainMenu"; //configurable, no hardcoded text
+
 
     private void Start()
     {
         
-        SceneManager.LoadScene("MainMenu"); // load MainMenu Scene (replaces Bootstrap scene)
-    }
+        SceneLoader.Load(mainMenu); //Dont load scenes directly, I ask my managerr to do it
+    } 
 }
