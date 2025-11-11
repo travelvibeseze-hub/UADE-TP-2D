@@ -1,4 +1,4 @@
-
+﻿
 
 using UnityEngine;
 
@@ -24,13 +24,15 @@ public class AudioManager : MonoBehaviour
         // sound clips for player actions
         public AudioClip jumpSound;
         public AudioClip walkSound;
+        public AudioClip deathSound;      // ← NUEVA LÍNEA
+        public AudioClip victorySound;    // ← NUEVA LÍNEA
 
 
 
 
-        // sound clips for UI buttons
+    // sound clips for UI buttons
 
-        public AudioClip buttonHoverSound;
+    public AudioClip buttonHoverSound;
         public AudioClip buttonClickSound;
 
 
@@ -136,4 +138,14 @@ public class AudioManager : MonoBehaviour
         {
             PlaySound(buttonClickSound, uiMixerGroup);
         }
-    }
+
+         public void PlayDeathSound()
+        {
+        PlaySound(deathSound, sfxMixerGroup);
+         }
+
+         public void PlayVictorySound()
+         {
+        PlaySound(victorySound, sfxMixerGroup);
+          }
+}

@@ -491,6 +491,8 @@ MonoBehaviour:
   uiMixerGroup: {fileID: 17875203700281876, guid: cebc8b1f7f927ec4b90a71c8a2c672b5, type: 2}
   jumpSound: {fileID: 8300000, guid: 68ecfe30093b7044e88c0ef252f4728b, type: 3}
   walkSound: {fileID: 8300000, guid: 6c54375140c6cdf4099bc669286b7946, type: 3}
+  deathSound: {fileID: 8300000, guid: 88860bf79365db74a9500e6a68e4dbbe, type: 3}
+  victorySound: {fileID: 8300000, guid: 0e0c829ea1968bd4dad6895e4451806e, type: 3}
   buttonHoverSound: {fileID: 8300000, guid: f7af37defbbe32f448be0645dc310258, type: 3}
   buttonClickSound: {fileID: 8300000, guid: 37bf3198bd5d93c46bb660af773a0665, type: 3}
   minPitch: 0.9
