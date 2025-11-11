@@ -53,6 +53,9 @@ public class PlayerMovement : MonoBehaviour
         // If this circle touches anything in the groundLayer, returns true
         // check if player is touching the ground
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
+        
+        animator.SetBool("isJumping", !isGrounded); // updatee jump animation based on vertical velocity
     }
 
 
