@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 using UnityEngine.InputSystem;
 
@@ -34,6 +34,19 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
 
 
+
+
+
+    // Timer variables for walk sound
+
+    // walkSoundTimer counts down to 0, when it reachees 0 we play the sound again
+    private float walkSoundTimer = 0f;
+
+
+    // walkSoundInterval is how many seconds bettween each footstep sound (0.3 = play sound every 0.3 seconds
+    private float walkSoundInterval = 0.3f;
+
+
     void Start()
 
     {
@@ -61,19 +74,51 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+
+
         // Move the player horizontally (left/right)
         rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
 
+
+
         // Update animation based on movement
+
         // If moveInput.x is not zero, player is moving (left or right)
         if (moveInput.x != 0)
         {
             // Tell animator to play Walk animation
             animator.SetBool("isMoving", true);
 
+
+            
+
+
+
+
+            // Play walk sound only when player is moving AND on the ground
+            if (isGrounded)
+
+
+            {
+                
+                
+                walkSoundTimer -= Time.fixedDeltaTime; //We subtract this time from our timer each frame
+
+
+                // When timer reaches 0 or belkow, play the sound
+                if (walkSoundTimer <= 0f)
+                {
+                    AudioManager.Instance.PlayWalkSound(); // play footstep sound
+                    walkSoundTimer = walkSoundInterval; //reset timer back to 0.3 seconds
+                }
+            }
+
+
+
             // Flip sprite depending on direction
             // moveInput.x > 0 means moving right, < 0 means moving left
             if (moveInput.x > 0)
+
                 spriteRenderer.flipX = false; // Face right (normal sprite)
             else
                 spriteRenderer.flipX = true;  // Face left (flipped sprite)
@@ -111,9 +156,12 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && isGrounded)
 
         {
-            // Apply jump force to the player   
 
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            // jump sound before applying jump force
+            AudioManager.Instance.PlayJumpSound();
+
+
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce); // apply jump force to the player   
 
         }
     }
